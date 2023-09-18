@@ -1,0 +1,22 @@
+/*============
+global styles
+============*/
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  font-family: Helvetica, Tahoma, sans-serif;
+  user-select: none;
+}
+
+/*============
+    layout
+============*/
+
+/*============
+  components
+============*/
