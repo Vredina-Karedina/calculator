@@ -1,29 +1,26 @@
 "Use strict"
 
-const number1 = parseInt(prompt("number1"));
-const number2 = parseInt(prompt("number2"));
+let number1 = parseInt(prompt("number1"));
+let number2 = parseInt(prompt("number2"));
+let operator = "subtract";
 let result;
+console.log(operate(number1, number2));
 
-function sum() {
-    result = number1 + number2;
-    console.log(`sum = ${result}`);
-}
-sum();
+function operate(number1, number2) {
+    const operations = {};
+    operations.add = function() {
+        result = number1 + number2;
+    }
+    operations.subtract = function() {
+        result = number1 - number2;
+    }
+    operations.multiply = function() {
+        result = number1 * number2;
+    }
+    operations.divide = function() {
+        result = number1 / number2;
+    }
 
-function extract() {
-    result = number1 - number2;
-    console.log(`extraction = ${result}`);
+    operations[`${operator}`]();
+    return result;
 }
-extract();
-
-function multiply() {
-    result = number1 * number2;
-    console.log(`multiplication = ${result}`);
-}
-multiply();
-
-function divide() {
-    result = number1 / number2;
-    console.log(`division = ${result}`);
-}
-divide();
