@@ -1,8 +1,8 @@
 "Use strict"
 
-let number1 = parseInt(prompt("number1"));
-let number2 = parseInt(prompt("number2"));
-let operator = "subtract";
+let number1;
+let number2;
+let operator;
 let result;
 console.log(operate(number1, number2));
 

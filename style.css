@@ -3,9 +3,9 @@ global styles
 ============*/
 
 body {
+  background: linear-gradient(white, grey);
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
   height: 100vh;
   width: 100vw;
   overflow: hidden;
@@ -17,6 +17,74 @@ body {
     layout
 ============*/
 
+.row-1 {
+  height: 25%;
+  display: flex;
+  align-items: flex-end;
+}
+
+.row-2 {
+  height: 100px;
+  background-color: #fffed1;
+  display: flex;
+  align-items: center;
+}
+
+.row-3 {
+  height: calc(75% - 100px);
+  display: flex;
+}
+
+.row-3 >* {
+  justify-content: flex-start;
+}
+
+.digits-column {
+  width: 330px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.operators-column {
+  height: 100%;
+  width: 100px;
+  background-color: #9393d8;
+  display: flex;
+  flex-direction: column;
+}
+
+.row-2 .operators-column {
+  background-color: #c7c6d5;
+}
+
+.left-column,
+.right-column {
+  flex: 1 1 auto;
+}
+
+.display {
+  height: 100px;
+  width: 330px;
+}
+
 /*============
   components
 ============*/
+
+button {
+  font-size: 80px;
+  font-weight: bold;
+  color: rgb(0, 0, 77);
+  width: 100px;
+  height: 100px;
+  border: none;
+  background: none;
+  text-shadow:
+    2px 2px 1px rgba(0, 0, 0, .25);
+}
+
+.clear-button {
+  height: auto;
+  width: auto;
+}
