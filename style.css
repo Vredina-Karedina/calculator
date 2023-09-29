@@ -88,3 +88,8 @@ button {
   height: auto;
   width: auto;
 }
+
+.backspace {
+  font-size: 70px;
+  transform: translateY(-2px);
+}

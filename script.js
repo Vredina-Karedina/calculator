@@ -1,5 +1,8 @@
 "Use strict"
 
+const buttons = document.querySelectorAll("button");
+buttons.forEach(button => console.log(button.textContent));
+
 let number1;
 let number2;
 let operator;
