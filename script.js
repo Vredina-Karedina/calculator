@@ -1,7 +1,8 @@
 "Use strict"
 
-const buttons = document.querySelectorAll("button");
-buttons.forEach(button => console.log(button.textContent));
+const display = document.querySelector(".display");
+let displayValue = 0192837465;
+display.textContent = displayValue;
 
 let number1;
 let number2;
