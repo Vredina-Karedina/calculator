@@ -96,11 +96,19 @@ button {
 
 .display {
   align-self: flex-end;
-  height: fit-content;
+  height: 100px;
   width: 310px;
-  font-size: 50px;
   padding-right: 17px;
   padding-bottom: 5px;
+  font-size: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.display .memory {
+  font-size: 30px;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
