@@ -18,7 +18,7 @@ buttons.forEach(button => {
 });
 
 function handleClickButton() {
-    if (Number(this.textContent)) {
+    if (Number(this.textContent) || this.textContent === "0") {
         updateNumber(this.textContent);
     }
 }
@@ -26,6 +26,8 @@ function handleClickButton() {
 function updateNumber(digit) {
     value = Number(value + digit);
     displayValue.textContent = value;
+    console.log(value);
+    console.log(typeof(value));
 }
 
 // function operate(number1, number2) {
