@@ -10,7 +10,6 @@ const displayMemory = document.querySelector(".memory");
 let value = 0;
 let memory = 0;
 displayValue.textContent = value;
-displayMemory.textContent = memory;
 
 const buttons = document.querySelectorAll("button");
 buttons.forEach(button => {
@@ -25,6 +24,9 @@ function handleClickButton() {
                 this.textContent === "x" || 
                 this.textContent === "/") {
         rememberNumber1(this.textContent);
+    } else if (this.textContent = "=") {
+        number2 = value;
+        operate(number1, number2);
     }
 }
 
@@ -39,23 +41,33 @@ function rememberNumber1(oper) {
     displayMemory.textContent = memory;
     value = 0;
     displayValue.textContent = value;
+
+    if (oper === "+") operator = "add";
+    if (oper === "-") operator = "subtract";
+    if (oper === "x") operator = "multiply";
+    if (oper === "/") operator = "divide";
 }
 
-// function operate(number1, number2) {
-//     const operations = {};
-//     operations.add = function() {
-//         result = number1 + number2;
-//     }
-//     operations.subtract = function() {
-//         result = number1 - number2;
-//     }
-//     operations.multiply = function() {
-//         result = number1 * number2;
-//     }
-//     operations.divide = function() {
-//         result = number1 / number2;
-//     }
+function operate(number1, number2) {
+    const operations = {};
 
-//     operations[`${operator}`]();
-//     return result;
-// }
+    operations["add"] = function() {
+        result = number1 + number2;
+    }
+    operations["subtract"] = function() {
+        result = number1 - number2;
+    }
+    operations["multiply"] = function() {
+        result = number1 * number2;
+    }
+    operations["divide"] = function() {
+        result = number1 / number2;
+    }
+
+    operations[operator]();
+    value = result;
+
+    displayValue.textContent = value;
+    displayMemory.textContent = 0;
+    return result;
+}
