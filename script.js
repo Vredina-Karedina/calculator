@@ -32,13 +32,13 @@ function handleClickButton() {
         number2 = value;
         operate(number1, number2);
     }
-}
+};
 
 function updateNumber(digit) {
     if (value === null) value = 0;
     value = Number(value + digit);
     displayValue.textContent = value;
-}
+};
 
 function rememberNumber1(oper) {
     number1 = value;
@@ -51,28 +51,34 @@ function rememberNumber1(oper) {
     if (oper === "-") operator = "subtract";
     if (oper === "x") operator = "multiply";
     if (oper === "/") operator = "divide";
-}
+};
 
 function operate(number1, number2) {
-    const operations = {};
-
-    operations["add"] = function() {
-        result = number1 + number2;
-    }
-    operations["subtract"] = function() {
-        result = number1 - number2;
-    }
-    operations["multiply"] = function() {
-        result = number1 * number2;
-    }
-    operations["divide"] = function() {
-        result = number1 / number2;
-    }
-
     operations[operator]();
-    value = result;
+
+    const resultLength = result.toString().split("").length;
+    const integerLength = result.toFixed().toString().split("").length;
+    if (resultLength === integerLength ||
+        resultLength < 10) {
+            value = result;
+    } else {
+        value = result.toFixed(9 - integerLength);
+    }
 
     displayValue.textContent = value;
     displayMemory.textContent = null;
-    return result;
+};
+
+const operations = {};
+operations["add"] = function() {
+    result = number1 + number2;
+}
+operations["subtract"] = function() {
+    result = number1 - number2;
+}
+operations["multiply"] = function() {
+    result = number1 * number2;
+}
+operations["divide"] = function() {
+    result = number1 / number2;
 }
