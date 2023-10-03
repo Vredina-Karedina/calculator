@@ -100,16 +100,23 @@ button {
   width: 310px;
   padding-right: 17px;
   padding-bottom: 5px;
-  font-size: 50px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-end;
 }
 
+.display .value {
+  height: 60px;
+  font-size: 50px;
+  flex: 1 1 auto;
+}
+
 .display .memory {
+  height: 40px;
   font-size: 30px;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
+  flex: 1 1 auto;
 }

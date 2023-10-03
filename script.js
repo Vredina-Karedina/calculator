@@ -7,8 +7,8 @@ let result;
 
 const displayValue = document.querySelector(".value");
 const displayMemory = document.querySelector(".memory");
-let value = 0;
-let memory = 0;
+let value = null;
+let memory = null;
 displayValue.textContent = value;
 
 const buttons = document.querySelectorAll("button");
@@ -31,6 +31,7 @@ function handleClickButton() {
 }
 
 function updateNumber(digit) {
+    if (value === null) value = 0;
     value = Number(value + digit);
     displayValue.textContent = value;
 }
@@ -39,7 +40,7 @@ function rememberNumber1(oper) {
     number1 = value;
     memory = number1 + " " + oper;
     displayMemory.textContent = memory;
-    value = 0;
+    value = null;
     displayValue.textContent = value;
 
     if (oper === "+") operator = "add";
@@ -68,6 +69,6 @@ function operate(number1, number2) {
     value = result;
 
     displayValue.textContent = value;
-    displayMemory.textContent = 0;
+    displayMemory.textContent = null;
     return result;
 }
