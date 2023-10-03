@@ -20,14 +20,25 @@ buttons.forEach(button => {
 function handleClickButton() {
     if (Number(this.textContent) || this.textContent === "0") {
         updateNumber(this.textContent);
+    } else if ( this.textContent === "+" || 
+                this.textContent === "-" || 
+                this.textContent === "x" || 
+                this.textContent === "/") {
+        rememberNumber1(this.textContent);
     }
 }
 
 function updateNumber(digit) {
     value = Number(value + digit);
     displayValue.textContent = value;
-    console.log(value);
-    console.log(typeof(value));
+}
+
+function rememberNumber1(oper) {
+    number1 = value;
+    memory = number1 + " " + oper;
+    displayMemory.textContent = memory;
+    value = 0;
+    displayValue.textContent = value;
 }
 
 // function operate(number1, number2) {
