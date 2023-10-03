@@ -12,7 +12,21 @@ let memory = 0;
 displayValue.textContent = value;
 displayMemory.textContent = memory;
 
-// console.log(operate(number1, number2));
+const buttons = document.querySelectorAll("button");
+buttons.forEach(button => {
+    button.addEventListener("click", handleClickButton);
+});
+
+function handleClickButton() {
+    if (Number(this.textContent)) {
+        updateNumber(this.textContent);
+    }
+}
+
+function updateNumber(digit) {
+    value = Number(value + digit);
+    displayValue.textContent = value;
+}
 
 // function operate(number1, number2) {
 //     const operations = {};
