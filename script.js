@@ -83,3 +83,15 @@ operations["multiply"] = function() {
 operations["divide"] = function() {
     result = number1 / number2;
 };
+
+const clearButton = document.querySelector(".clear-button");
+clearButton.addEventListener("click", cleanDisplay);
+
+function cleanDisplay() {
+    number1 = null;
+    number2 = null;
+    value = null;
+    memory = null;
+    displayValue.textContent = value;
+    displayMemory.textContent = memory;
+};
