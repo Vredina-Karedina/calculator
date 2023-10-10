@@ -28,7 +28,7 @@ function handleClickButton() {
                         operate(number1, number2);
                     };
                     rememberNumber1(this.textContent);
-    } else if (this.textContent = "=") {
+    } else if (this.textContent === "=") {
         number2 = value;
         operate(number1, number2);
     }
