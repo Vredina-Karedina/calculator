@@ -17,6 +17,9 @@ buttons.forEach(button => {
 });
 
 function handleClickButton() {
+    displayValue.style.fontSize = "50px";
+    displayValue.style.removeProperty("white-space");
+
     if (Number(this.textContent) || this.textContent === "0") {
         updateNumber(this.textContent);
     } else if ( this.textContent === "+" || 
@@ -35,17 +38,24 @@ function handleClickButton() {
 };
 
 function updateNumber(digit) {
-    if (value === null) value = 0;
+    if (value === null || !Number(value)) value = 0;
     value = Number(value + digit);
     displayValue.textContent = value;
 };
 
 function rememberNumber1(oper) {
-    number1 = value;
-    memory = number1 + " " + oper;
-    displayMemory.textContent = memory;
-    value = null;
-    displayValue.textContent = value;
+    if (result === "warning") {
+        number1 = null;
+        number2 = null;
+        result = null;
+        displayValue.textContent = value;
+    } else {
+        number1 = value;
+        memory = number1 + " " + oper;
+        displayMemory.textContent = memory;
+        value = null;
+        displayValue.textContent = value;
+    }
 
     if (oper === "+") operator = "add";
     if (oper === "-") operator = "subtract";
@@ -57,19 +67,28 @@ function operate(number1, number2) {
     if (number1 === null || number2 === null) return;
     operations[operator]();
 
-    const resultLength = result.toString().split("").length;
-    const integerLength = result.toFixed().toString().split("").length;
-    if (resultLength === integerLength ||
-        resultLength < 10) {
-            value = result;
+    if (result === "warning") {
+        displayValue.style.fontSize = "17px";
+        displayValue.style.whiteSpace = "pre";
+        value = "What would your math teacher said \r\n";
+        value += "if saw you are dividing by 0!? \r\n";
+        value += "Never do this again!";
     } else {
-        value = result.toFixed(9 - integerLength);
-    };
+        const resultLength = result.toString().split("").length;
+        const integerLength = result.toFixed().toString().split("").length;
+        if (resultLength === integerLength ||
+            resultLength < 10) {
+                value = result;
+        } else {
+            value = result.toFixed(9 - integerLength);
+        };
+    }
 
     displayValue.textContent = value;
     displayMemory.textContent = null;
 };
 
+const textField = document.querySelector(".row-1 .right-column");
 const operations = {};
 operations["add"] = function() {
     result = number1 + number2;
@@ -81,7 +100,11 @@ operations["multiply"] = function() {
     result = number1 * number2;
 };
 operations["divide"] = function() {
-    result = number1 / number2;
+    if (number2 === 0) {
+        result = "warning";
+    } else {
+        result = number1 / number2;
+    }
 };
 
 const clearButton = document.querySelector(".clear-button");
