@@ -28,6 +28,9 @@ body {
   background-color: #fffed1;
   display: flex;
   align-items: center;
+  box-shadow:
+  0px 4px 3px rgba(0, 0, 0, .25),
+  0px -1px 1px rgba(0, 0, 0, .08);
 }
 
 .row-3 {
@@ -49,9 +52,12 @@ body {
 .operators-column {
   height: 100%;
   width: 100px;
-  background-color: #9393d8;
+  background-color: rgb(147, 147, 216, 0.7);
   display: flex;
   flex-direction: column;
+  box-shadow:
+  4px 0px 3px rgba(0, 0, 0, .25),
+  -1px 0px 1px rgba(0, 0, 0, .08);
 }
 
 .row-2 .operators-column {
