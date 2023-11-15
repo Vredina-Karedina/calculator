@@ -16,29 +16,33 @@ buttons.forEach(button => {
     button.addEventListener("click", handleClickButton);
 });
 
-function handleClickButton() {
+function handleClickButton () {
+    handleSymbol(this);
+}
+
+function handleSymbol(key) {
     if (result === "warning") {
         cleanDisplay();
     };
     displayValue.style.fontSize = "50px";
     displayValue.style.removeProperty("white-space");
 
-    if (this.textContent === ".") {
+    if (key.textContent === ".") {
         if (displayValue.textContent.includes(".")) return;
-        updateNumber(this.textContent);
-    } else if (Number(this.textContent) || this.textContent == "0") {
-        updateNumber(this.textContent);
-    } else if ( this.textContent === "+" || 
-                this.textContent === "-" || 
-                this.textContent === "x" || 
-                this.textContent === "/") {
+        updateNumber(key.textContent);
+    } else if (Number(key.textContent) || key.textContent == "0") {
+        updateNumber(key.textContent);
+    } else if ( key.textContent === "+" || 
+                key.textContent === "-" || 
+                key.textContent === "x" || 
+                key.textContent === "/") {
                     if (value === null) return;
                     if (displayMemory.textContent) {
                         number2 = value;
                         operate(number1, number2);
                     };
-                    rememberNumber1(this.textContent);
-    } else if (this.textContent === "=") {
+                    rememberNumber1(key.textContent);
+    } else if (key.textContent === "=") {
         number2 = value;
         operate(number1, number2);
     };
@@ -93,7 +97,7 @@ function operate(number1, number2) {
 const textField = document.querySelector(".row-1 .right-column");
 const operations = {};
 operations["add"] = function() {
-    result = number1 + number2;
+    result = Number(number1) + Number(number2);
 };
 operations["subtract"] = function() {
     result = number1 - number2;
@@ -130,3 +134,15 @@ function handleBackspace() {
     value = value.slice(0, value.length - 1);
     displayValue.textContent = value;
 };
+
+window.addEventListener("keydown", handleKeyboard);
+
+function handleKeyboard (e) {
+    const key = document.querySelector(`.keycode-${e.keyCode}`);
+    if (!key) return;
+    if (`keycode-${e.keyCode}` === "keycode-8") {
+        handleBackspace();
+    } else {
+        handleSymbol(key);
+    }
+}

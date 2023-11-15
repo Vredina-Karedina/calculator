@@ -98,6 +98,10 @@ button {
   transform: translateY(-2px);
 }
 
+kbd {
+  font-family: Helvetica, Tahoma, sans-serif;
+}
+
 /* display */
 
 .display {
