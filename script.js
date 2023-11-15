@@ -23,7 +23,7 @@ function handleClickButton() {
         result = null;
         value = null;
         displayValue.textContent = value;
-    }
+    };
     displayValue.style.fontSize = "50px";
     displayValue.style.removeProperty("white-space");
 
@@ -57,7 +57,7 @@ function updateNumber(digit) {
         }
     } else {
         value += digit;
-    }
+    };
     displayValue.textContent = value;
 };
 
@@ -78,7 +78,7 @@ function rememberNumber1(oper) {
 function operate(number1, number2) {
     if (number1 === null || number2 === null) return;
     operations[operator]();
-
+    
     if (result === "warning") {
         displayValue.style.fontSize = "17px";
         displayValue.style.whiteSpace = "pre";
@@ -88,7 +88,7 @@ function operate(number1, number2) {
     } else {
         const integerLength = result.toFixed().toString().split("").length;
         value = Math.round(result*Math.pow(10, 9-integerLength))/Math.pow(10, 9-integerLength);
-    }
+    };
 
     displayValue.textContent = value;
     displayMemory.textContent = null;
@@ -106,11 +106,11 @@ operations["multiply"] = function() {
     result = number1 * number2;
 };
 operations["divide"] = function() {
-    if (number2 === 0) {
+    if (number2 === "0" || number2 === "0." || number2 === "0.0") {
         result = "warning";
     } else {
         result = number1 / number2;
-    }
+    };
 };
 
 const clearButton = document.querySelector(".clear-button");
