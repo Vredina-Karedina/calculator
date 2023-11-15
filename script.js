@@ -17,15 +17,26 @@ buttons.forEach(button => {
 });
 
 function handleClickButton() {
+    if (result === "warning") {
+        number1 = null;
+        number2 = null;
+        result = null;
+        value = null;
+        displayValue.textContent = value;
+    }
     displayValue.style.fontSize = "50px";
     displayValue.style.removeProperty("white-space");
 
-    if (Number(this.textContent) || this.textContent === "0") {
+    if (this.textContent === ".") {
+        if (displayValue.textContent.includes(".")) return;
+        updateNumber(this.textContent);
+    } else if (Number(this.textContent) || this.textContent == "0") {
         updateNumber(this.textContent);
     } else if ( this.textContent === "+" || 
                 this.textContent === "-" || 
                 this.textContent === "x" || 
                 this.textContent === "/") {
+                    if (value === null) return;
                     if (displayMemory.textContent) {
                         number2 = value;
                         operate(number1, number2);
@@ -34,28 +45,29 @@ function handleClickButton() {
     } else if (this.textContent === "=") {
         number2 = value;
         operate(number1, number2);
-    }
+    };
 };
 
 function updateNumber(digit) {
-    if (value === null || !Number(value)) value = 0;
-    value = Number(value + digit);
+    if (value === null || value === "0") {
+        if (digit === ".") {
+            value = "0.";
+        } else {
+            value = digit;
+        }
+    } else {
+        value += digit;
+    }
     displayValue.textContent = value;
 };
 
 function rememberNumber1(oper) {
-    if (result === "warning") {
-        number1 = null;
-        number2 = null;
-        result = null;
-        displayValue.textContent = value;
-    } else {
-        number1 = value;
-        memory = number1 + " " + oper;
-        displayMemory.textContent = memory;
-        value = null;
-        displayValue.textContent = value;
-    }
+    if (result === "warning") return;
+    number1 = value;
+    memory = number1 + " " + oper;
+    displayMemory.textContent = memory;
+    value = null;
+    displayValue.textContent = value;
 
     if (oper === "+") operator = "add";
     if (oper === "-") operator = "subtract";
