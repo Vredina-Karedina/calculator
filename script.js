@@ -18,7 +18,7 @@ buttons.forEach(button => {
 
 function handleClickButton() {
     if (result === "warning") {
-        cleanDisplay()
+        cleanDisplay();
     };
     displayValue.style.fontSize = "50px";
     displayValue.style.removeProperty("white-space");
@@ -120,4 +120,13 @@ function cleanDisplay() {
     memory = null;
     displayValue.textContent = value;
     displayMemory.textContent = memory;
+};
+
+const backspaceButton = document.querySelector(".backspace");
+backspaceButton.addEventListener("click", handleBackspace);
+
+function handleBackspace() {
+    if (value === null) return;
+    value = value.slice(0, value.length - 1);
+    displayValue.textContent = value;
 };
