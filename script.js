@@ -86,14 +86,8 @@ function operate(number1, number2) {
         value += "if saw you are dividing by 0!? \r\n";
         value += "Never do this again!";
     } else {
-        const resultLength = result.toString().split("").length;
         const integerLength = result.toFixed().toString().split("").length;
-        if (resultLength === integerLength ||
-            resultLength < 10) {
-                value = result;
-        } else {
-            value = result.toFixed(9 - integerLength);
-        };
+        value = Math.round(result*Math.pow(10, 9-integerLength))/Math.pow(10, 9-integerLength);
     }
 
     displayValue.textContent = value;
