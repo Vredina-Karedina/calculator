@@ -18,11 +18,7 @@ buttons.forEach(button => {
 
 function handleClickButton() {
     if (result === "warning") {
-        number1 = null;
-        number2 = null;
-        result = null;
-        value = null;
-        displayValue.textContent = value;
+        cleanDisplay()
     };
     displayValue.style.fontSize = "50px";
     displayValue.style.removeProperty("white-space");
@@ -119,6 +115,7 @@ clearButton.addEventListener("click", cleanDisplay);
 function cleanDisplay() {
     number1 = null;
     number2 = null;
+    result = null;
     value = null;
     memory = null;
     displayValue.textContent = value;
