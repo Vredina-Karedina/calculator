@@ -86,9 +86,9 @@ function operate(number1, number2) {
     if (result === "warning") {
         displayValue.style.fontSize = "17px";
         displayValue.style.whiteSpace = "pre";
-        value = "What would your math teacher said \r\n";
-        value += "if saw you are dividing by 0!? \r\n";
-        value += "Never do this again!";
+        value = "What would your math teacher say\r\n";
+        value += "if they saw you dividing by 0?!\r\n";
+        value += "";
     } else {
         const integerLength = result.toFixed().toString().split("").length;
         value = Math.round(result*Math.pow(10, 9-integerLength))/Math.pow(10, 9-integerLength);
