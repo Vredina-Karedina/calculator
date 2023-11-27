@@ -61,6 +61,7 @@ function updateNumber(digit) {
     } else {
         value += digit;
     };
+    if (value.length > 10) return;
     displayValue.textContent = value;
 };
 
