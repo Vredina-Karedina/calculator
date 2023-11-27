@@ -21,11 +21,14 @@ function handleClickButton () {
 }
 
 function handleSymbol(key) {
-    if (result === "warning") {
+    if (result === "warning" ||
+        key.classList.value === "clear-button keycode-46 keycode-27") {
         cleanDisplay();
     };
     displayValue.style.fontSize = "50px";
     displayValue.style.removeProperty("white-space");
+
+    if (key.classList.value === "backspace keycode-8") handleBackspace();
 
     if (key.textContent === ".") {
         if (displayValue.textContent.includes(".")) return;
@@ -88,6 +91,7 @@ function operate(number1, number2) {
     } else {
         const integerLength = result.toFixed().toString().split("").length;
         value = Math.round(result*Math.pow(10, 9-integerLength))/Math.pow(10, 9-integerLength);
+        value = value.toString();
     };
 
     displayValue.textContent = value;
@@ -113,9 +117,6 @@ operations["divide"] = function() {
     };
 };
 
-const clearButton = document.querySelector(".clear-button");
-clearButton.addEventListener("click", cleanDisplay);
-
 function cleanDisplay() {
     number1 = null;
     number2 = null;
@@ -125,9 +126,6 @@ function cleanDisplay() {
     displayValue.textContent = value;
     displayMemory.textContent = memory;
 };
-
-const backspaceButton = document.querySelector(".backspace");
-backspaceButton.addEventListener("click", handleBackspace);
 
 function handleBackspace() {
     if (value === null) return;
@@ -140,9 +138,6 @@ window.addEventListener("keydown", handleKeyboard);
 function handleKeyboard (e) {
     const key = document.querySelector(`.keycode-${e.keyCode}`);
     if (!key) return;
-    if (`keycode-${e.keyCode}` === "keycode-8") {
-        handleBackspace();
-    } else {
-        handleSymbol(key);
-    }
-}
+    handleSymbol(key);
+    e.preventDefault();
+};
