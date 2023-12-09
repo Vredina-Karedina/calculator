@@ -98,6 +98,12 @@ button {
   transform: translateY(-2px);
 }
 
+.hovering {
+  filter: brightness(0.8);
+  transform: scale(0.9);
+  transition: all .1s ease;
+}
+
 kbd {
   font-family: Helvetica, Tahoma, sans-serif;
 }

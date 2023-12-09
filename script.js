@@ -17,6 +17,7 @@ buttons.forEach(button => {
 });
 
 function handleClickButton () {
+    this.classList.remove("hovering");
     handleSymbol(this);
 }
 
@@ -142,3 +143,6 @@ function handleKeyboard (e) {
     handleSymbol(key);
     e.preventDefault();
 };
+
+buttons.forEach(button => button.addEventListener("mouseover", () => button.classList.add("hovering")));
+buttons.forEach(button => button.addEventListener("mouseout", () => button.classList.remove("hovering")));
