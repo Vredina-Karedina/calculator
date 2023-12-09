@@ -112,6 +112,10 @@ button {
   transition: all .1s ease;
 }
 
+button:focus-visible {
+  outline: none;
+}
+
 kbd {
   font-family: Helvetica, Tahoma, sans-serif;
 }
