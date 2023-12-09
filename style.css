@@ -104,6 +104,14 @@ button {
   transition: all .1s ease;
 }
 
+.triggered {
+  filter: brightness(1.5);
+  transform: scale(1.2);
+  border-color: rgb(0, 0, 77);
+  text-shadow: 0 0 10px #fffd93;
+  transition: all .1s ease;
+}
+
 kbd {
   font-family: Helvetica, Tahoma, sans-serif;
 }

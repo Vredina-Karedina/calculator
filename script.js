@@ -22,14 +22,15 @@ function handleClickButton () {
 }
 
 function handleSymbol(key) {
+    key.classList.add("triggered");
     if (result === "warning" ||
-        key.classList.value === "clear-button keycode-46 keycode-27") {
-        cleanDisplay();
+        key.classList.value.includes("clear-button")) {
+            cleanDisplay();
     };
     displayValue.style.fontSize = "50px";
     displayValue.style.removeProperty("white-space");
 
-    if (key.classList.value === "backspace keycode-8") handleBackspace();
+    if (key.classList.value.includes("backspace")) handleBackspace();
 
     if (key.textContent === ".") {
         if (displayValue.textContent.includes(".")) return;
@@ -143,6 +144,13 @@ function handleKeyboard (e) {
     handleSymbol(key);
     e.preventDefault();
 };
+
+buttons.forEach(button => button.addEventListener("transitionend", removeTransition));
+
+function removeTransition (e) {
+    if (e.propertyName !== "transform") return;
+    this.classList.remove("triggered");
+}
 
 buttons.forEach(button => button.addEventListener("mouseover", () => button.classList.add("hovering")));
 buttons.forEach(button => button.addEventListener("mouseout", () => button.classList.remove("hovering")));
