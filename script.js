@@ -60,10 +60,11 @@ function updateNumber(digit) {
         } else {
             value = digit;
         }
+    } else if (value.length >= 10) {
+        return;
     } else {
         value += digit;
     };
-    if (value.length > 10) return;
     displayValue.textContent = value;
 };
 
