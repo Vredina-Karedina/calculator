@@ -93,7 +93,7 @@ function operate(number1, number2) {
         value += "";
     } else {
         const integerLength = result.toFixed().toString().split("").length;
-        value = Math.round(result*Math.pow(10, 9-integerLength))/Math.pow(10, 9-integerLength);
+        value = Math.round(result*Math.pow(10, 9-integerLength)/Math.pow(10, 9-integerLength));
         value = value.toString();
     };
 
