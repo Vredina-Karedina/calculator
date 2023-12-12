@@ -85,6 +85,7 @@ function rememberNumber1(oper) {
 function operate(number1, number2) {
     if (number1 === null || number2 === null) return;
     operations[operator]();
+    console.log(result);
     
     if (result === "warning") {
         displayValue.style.fontSize = "17px";
@@ -94,7 +95,11 @@ function operate(number1, number2) {
         value += "";
     } else {
         const integerLength = result.toFixed().toString().split("").length;
-        value = Math.round(result*Math.pow(10, 9-integerLength)/Math.pow(10, 9-integerLength));
+        if (integerLength >= 10) {
+            value = result.toExponential(3);
+        } else {
+            value = Math.round(result*Math.pow(10, 9-integerLength))/Math.pow(10, 9-integerLength);
+        }
         value = value.toString();
     };
 
