@@ -26,9 +26,9 @@ function handleSymbol(key) {
     if (result === "warning" ||
         key.classList.value.includes("clear-button")) {
             cleanDisplay();
+            displayValue.style.fontSize = "50px";
+            displayValue.style.removeProperty("white-space");        
     };
-    displayValue.style.fontSize = "50px";
-    displayValue.style.removeProperty("white-space");
 
     if (key.classList.value.includes("backspace")) handleBackspace();
 
@@ -94,7 +94,11 @@ function operate(number1, number2) {
         value += "";
     } else {
         const integerLength = result.toFixed().toString().split("").length;
-        value = Math.round(result*Math.pow(10, 9-integerLength)/Math.pow(10, 9-integerLength));
+        if (integerLength >= 10) {
+            value = result.toExponential(3);
+        } else {
+            value = Math.round(result*Math.pow(10, 9-integerLength))/Math.pow(10, 9-integerLength);
+        }
         value = value.toString();
     };
 
