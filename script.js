@@ -26,9 +26,9 @@ function handleSymbol(key) {
     if (result === "warning" ||
         key.classList.value.includes("clear-button")) {
             cleanDisplay();
+            displayValue.style.fontSize = "50px";
+            displayValue.style.removeProperty("white-space");        
     };
-    displayValue.style.fontSize = "50px";
-    displayValue.style.removeProperty("white-space");
 
     if (key.classList.value.includes("backspace")) handleBackspace();
 
@@ -85,7 +85,6 @@ function rememberNumber1(oper) {
 function operate(number1, number2) {
     if (number1 === null || number2 === null) return;
     operations[operator]();
-    console.log(result);
     
     if (result === "warning") {
         displayValue.style.fontSize = "17px";
