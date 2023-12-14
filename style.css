@@ -3,7 +3,7 @@ global styles
 ============*/
 
 body {
-  background: linear-gradient(white, grey);
+  background: rgb(185, 188, 192);
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -29,8 +29,8 @@ body {
   display: flex;
   align-items: center;
   box-shadow:
-  0px 4px 3px rgba(0, 0, 0, .25),
-  0px -1px 1px rgba(0, 0, 0, .08);
+  0px 0px 9px rgba(0, 0, 0, .25),
+  0px 0px 4px rgba(0, 0, 0, .09);
 }
 
 .row-3 {
@@ -50,18 +50,19 @@ body {
 }
 
 .operators-column {
-  height: 100%;
   width: 100px;
-  background-color: rgb(147, 147, 216, 0.7);
+  position: relative;
   display: flex;
   flex-direction: column;
-  box-shadow:
-  4px 0px 3px rgba(0, 0, 0, .25),
-  -1px 0px 1px rgba(0, 0, 0, .08);
 }
 
-.row-2 .operators-column {
-  background-color: #c7c6d5;
+.column-color {
+  height: 110vh;
+  transform: translate(0, 75vh);
+  background-color: rgb(147, 147, 216, 0.6);
+  box-shadow:
+    0px 0px 9px rgba(0, 0, 0, .25),
+    0px 0px 4px rgba(0, 0, 0, .09);
 }
 
 .left-column,
