@@ -1,2 +1,2 @@
 # calculator
-Calculator
+The calculator is created for educational purposes
