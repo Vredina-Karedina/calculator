@@ -38,7 +38,6 @@ function handleSymbol(key) {
     } else if (Number(key.textContent) || key.textContent == "0") {
         updateNumber(key.textContent);
     } else if ( key.textContent === "+" || 
-                key.textContent === "-" || 
                 key.textContent === "x" || 
                 key.textContent === "/") {
                     if (value === null) return;
@@ -47,6 +46,18 @@ function handleSymbol(key) {
                         operate(number1, number2);
                     };
                     rememberNumber1(key.textContent);
+    } else if (key.textContent === "-") {
+        if (!value) {
+            updateNumber(key.textContent);
+        } else if (value === "-") {
+            return;
+        } else if (value.includes("-") && value.length > 1 && !displayMemory.textContent) {
+            rememberNumber1(key.textContent);
+        } else {
+            number2 = value;
+            operate(number1, number2);
+            rememberNumber1(key.textContent);
+        };
     } else if (key.textContent === "=") {
         number2 = value;
         operate(number1, number2);
@@ -59,7 +70,11 @@ function updateNumber(digit) {
             value = "0.";
         } else {
             value = digit;
-        }
+        };
+    } else if (value === "-0" && Number(digit)) {
+        value = `-${digit}`;
+    } else if (value === "-" && digit === ".") {
+        value = `-0${digit}`;
     } else if (value.length >= 10) {
         return;
     } else {
@@ -118,7 +133,7 @@ operations["multiply"] = function() {
     result = number1 * number2;
 };
 operations["divide"] = function() {
-    if (number2 === "0" || number2 === "0." || number2 === "0.0") {
+    if (Math.abs(number2) == 0) {
         result = "warning";
     } else {
         result = number1 / number2;
