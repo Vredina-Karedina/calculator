@@ -74,6 +74,12 @@ body {
   components
 ============*/
 
+/* images */
+
+img {
+  transform: scale(0.5, 0.5);
+}
+
 /* buttons */
 
 button {
