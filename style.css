@@ -149,3 +149,37 @@ kbd {
   align-items: flex-end;
   flex: 1 1 auto;
 }
+
+/*============
+    media
+============*/
+@media screen and (max-width: 600px) {
+  body {
+    height: 100svh;
+  }
+
+  .digits-column {
+    width: 75vw;
+  }
+
+  .digits-column div {
+    width: 75vw;
+    display: flex;
+  }
+
+  .operators-column {
+    width: 25vw;
+    align-items: center;
+  }
+}
+
+@media screen and (max-height: 600px) and (orientation: landscape) {
+  body {
+    transform: rotate(90deg);
+  }
+
+  .column-color {
+    height: 110vw;
+    transform: translate(0, 70vw);
+  }
+}
