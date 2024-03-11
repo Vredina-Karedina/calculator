@@ -128,7 +128,7 @@ kbd {
   align-self: flex-end;
   height: 100px;
   width: 310px;
-  padding-right: 17px;
+  padding-right: 15px;
   padding-bottom: 5px;
   display: flex;
   flex-direction: column;
@@ -158,14 +158,14 @@ kbd {
   body {
     height: 100svh;
   }
+    
+  .display {
+    width: 300px;
+    padding-right: 5px;
+  }  
 
   .digits-column {
     width: 75vw;
-  }
-
-  .digits-column div {
-    width: 75vw;
-    display: flex;
   }
 
   .operators-column {
