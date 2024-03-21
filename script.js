@@ -11,6 +11,14 @@ let value = null;
 let memory = null;
 displayValue.textContent = value;
 
+const screenWidth = window.screen.width;
+if (screenWidth <= 600) {
+    displayValue.style.setProperty("font-size", "45px");
+} else {
+    displayValue.style.setProperty("font-size", "50px");
+};
+const displayFontSize = displayValue.style.getPropertyValue("font-size");
+
 const buttons = document.querySelectorAll("button");
 buttons.forEach(button => {
     button.addEventListener("click", handleClickButton);
@@ -26,8 +34,8 @@ function handleSymbol(key) {
     if (result === "warning" ||
         key.classList.value.includes("clear-button")) {
             cleanDisplay();
-            displayValue.style.fontSize = "50px";
-            displayValue.style.removeProperty("white-space");        
+            displayValue.style.fontSize = displayFontSize;
+            displayValue.style.removeProperty("white-space");
     };
 
     if (key.classList.value.includes("backspace")) handleBackspace();
